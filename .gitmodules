@@ -1,0 +1,3 @@
+[submodule "claude-code-proxy"]
+	path = claude-code-proxy
+	url = https://github.com/fuergaosi233/claude-code-proxy.git
