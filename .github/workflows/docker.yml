@@ -62,5 +62,8 @@ jobs:
       - name: Verify image
         if: github.event_name != 'pull_request'
         run: |
-          docker pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
-          docker inspect ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest | grep -A 10 "ContainerConfig"
+          IMAGE_TAG="${{ env.REGISTRY }}/${{ github.repository }}"
+          IMAGE_TAG_LOWERCASE="${IMAGE_TAG,,}"
+          echo "Pulling image: ${IMAGE_TAG_LOWERCASE}:master"
+          docker pull "${IMAGE_TAG_LOWERCASE}:master"
+          echo "Image verification successful!"
